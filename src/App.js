@@ -22,6 +22,25 @@ class App extends Component {
     return marked(text2)
   }
 
+  componentDidMount () {
+    //console.log('montage')
+    const text = localStorage.getItem('myText')
+    if(text)
+    {
+      this.setState({text})
+    } else {
+      this.setState({text:sampleText})
+    }
+  }
+
+  componentDidUpdate () {
+    //console.log('modification')
+    const text = this.state.text // je récup mon state
+    // envoyer dans le localStorage
+    localStorage.setItem('myText',text) // le nom du param/variable et la valeur
+  }
+
+
   render() { 
     return ( 
       <>
